@@ -17,6 +17,20 @@ export class Product {
     });
   }
 
+  public static with(
+    id: string,
+    name: string,
+    price: number,
+    quantity: number
+  ) {
+    return new Product({
+      id,
+      name,
+      price,
+      quantity,
+    });
+  }
+
   //getters
   public get id() {
     return this.props.id;
@@ -34,15 +48,15 @@ export class Product {
     return this.props.quantity;
   }
 
-  public increaseStock(amount: number) {
+  public buy(amount: number) {
     this.props.quantity += amount;
   }
 
-  public sell(amount: number){
-    if(this.props.quantity < amount){
-        throw new Error("O saldo do produto não é suficiente para a venda!")
+  public sell(amount: number) {
+    if (this.props.quantity < amount) {
+      throw new Error("O saldo do produto não é suficiente para a venda!");
     }
 
-    this.props.quantity -= amount
+    this.props.quantity -= amount;
   }
 }
